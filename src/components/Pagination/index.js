@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 
 const Pagination = (props) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   useEffect(() => {
-      const value = props.showPerPage * counter;
-    props.handlePage(value-props.showPerPage,value);
+    const value = props.showPerPage * counter;
+    props.handlePage(value - props.showPerPage, value);
   }, [counter]);
+
   const handleInc = () => {
-    console.log("Increased");
-    setCounter(counter + 1);
+    if (counter < 25) {
+      setCounter(counter + 1);
+      console.log("Increased");
+    }
   };
 
   const handleDec = () => {
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter(counter - 1);
       console.log("Decreased");
     }
